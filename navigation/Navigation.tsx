@@ -3,9 +3,12 @@ import { userRoutes } from '@/navigation/user.routes'
 import { Stack } from 'expo-router'
 
 const Navigation: FC = () => {
-	console.log('🚀Navigation.tsx:6')
 	return (
-		<Stack screenOptions={{}}>
+		<Stack
+			screenOptions={{
+				headerShown: false
+			}}
+		>
 			{userRoutes.map(route => (
 				<Stack.Screen
 					key={route.name}
