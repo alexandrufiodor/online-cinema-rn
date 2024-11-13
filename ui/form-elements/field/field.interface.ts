@@ -8,7 +8,7 @@ import { TextInputProps } from 'react-native'
 
 export interface IField<T extends FieldValues>
 	extends Omit<TextInputProps, 'onChange' | 'onChangeText' | 'value'> {
-	control: Control<FieldValues>
+	control: Control<T>
 	name: FieldPath<T>
 	rules?:
 		| Omit<

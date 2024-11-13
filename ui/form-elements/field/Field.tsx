@@ -14,6 +14,7 @@ const Field = <T extends Record<string, any>>({
 }: IField<T>): JSX.Element => {
 	return (
 		<Controller
+			//@ts-ignore
 			control={control}
 			name={name}
 			rules={rules}

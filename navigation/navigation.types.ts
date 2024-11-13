@@ -2,6 +2,7 @@ import { ComponentType } from 'react'
 
 export type TypeRoutStackParamList = {
 	auth: undefined
+	home: undefined
 	// ['(tabs)']: undefined
 } & TypeRouteStackAdminList
 
