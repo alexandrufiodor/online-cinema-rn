@@ -30,8 +30,8 @@ export default function RootLayout() {
 	}
 
 	return (
-		<SafeAreaProvider style={{ flex: 1 }}>
-			<SafeAreaView style={{ flex: 1 }}>
+		<SafeAreaProvider style={{ flex: 1 }} className='bg-black'>
+			<SafeAreaView style={{ flex: 1 }} className='bg-black'>
 				<ThemeProvider value={'dark' === 'dark' ? DarkTheme : DefaultTheme}>
 					<Navigation />
 				</ThemeProvider>

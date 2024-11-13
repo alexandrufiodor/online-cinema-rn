@@ -1,13 +1,8 @@
 import { FC } from 'react'
-import { View } from 'react-native'
-import { ThemedText } from '@/components/ThemedText'
+import AuthScreen from '@/components/screens/auth/Auth'
 
 const Auth: FC = () => {
-	return (
-		<View>
-			<ThemedText>Auth</ThemedText>
-		</View>
-	)
+	return <AuthScreen />
 }
 
 export default Auth
