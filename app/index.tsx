@@ -1,14 +1,8 @@
-import { Text, View } from 'react-native'
-import React from 'react'
+import React, { FC } from 'react'
+import AuthScreen from '@/components/screens/auth/Auth'
 
-export default function home() {
-	return (
-		<View className='mx-2 justify-center items-center h-full'>
-			<View className='w-9/12'>
-				<Text className='text-center text-white text-4xl font-bold mb-2.5'>
-					Home
-				</Text>
-			</View>
-		</View>
-	)
+const index: FC = () => {
+	return <AuthScreen />
 }
+
+export default index

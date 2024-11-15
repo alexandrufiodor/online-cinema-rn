@@ -1,10 +1,22 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { routes } from '@/navigation/user.routes'
-import { Stack } from 'expo-router'
+import { Stack, useRouter, useSegments } from 'expo-router'
 
 const PrivateNavigator: FC = () => {
 	const { user } = useAuth()
+	const segments = useSegments()
+	const router = useRouter()
+
+	useEffect(() => {
+		const inAuthGroup = segments[0] === '(protected)'
+
+		if (!user && inAuthGroup) {
+			router.replace('/')
+		} else if (user) {
+			router.replace('/(protected)')
+		}
+	}, [user])
 	return (
 		<Stack
 			screenOptions={{
@@ -20,11 +32,11 @@ const PrivateNavigator: FC = () => {
 							options={route.options}
 						/>
 					) : (
-						<Stack.Screen key='not-found' name='not-found' />
+						<Stack.Screen key='not-found' name='+not-found' />
 					)
 				)
 			) : (
-				<Stack.Screen key='auth' name='auth' />
+				<Stack.Screen key='index' name='index' />
 			)}
 		</Stack>
 	)

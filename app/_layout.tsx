@@ -3,8 +3,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import '../global.css'
 import { SafeAreaView } from 'react-native'
 import { DarkTheme, ThemeProvider } from '@react-navigation/native'
-import Navigation from '@/navigation/Navigation'
 import AuthProvider from '@/providers/auth/AuthProvider'
+import Navigation from '@/navigation/Navigation'
+
+export const unstable_settings = {
+	initialRouteName: 'home'
+}
 
 export default function RootLayout() {
 	return (

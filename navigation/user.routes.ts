@@ -1,16 +1,16 @@
 import { IRoute } from '@/navigation/navigation.types'
-import auth from '@/app/auth'
 import { adminRoutes } from '@/navigation/admin.routes'
-import home from '@/app/home'
+import index from '@/app'
+import TabLayout from '@/app/(protected)/_layout'
 
 export const userRoutes: IRoute[] = [
 	{
-		name: 'auth',
-		component: auth
+		name: 'index',
+		component: index
 	},
 	{
-		name: 'home',
-		component: home
+		name: '(protected)',
+		component: TabLayout
 	}
 ]
 
