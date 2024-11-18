@@ -1,22 +1,8 @@
-import { FC, useEffect } from 'react'
-import { useAuth } from '@/hooks/useAuth'
+import { FC } from 'react'
 import { routes } from '@/navigation/user.routes'
-import { Stack, useRouter, useSegments } from 'expo-router'
+import { Stack } from 'expo-router'
 
 const PrivateNavigator: FC = () => {
-	const { user } = useAuth()
-	const segments = useSegments()
-	const router = useRouter()
-
-	useEffect(() => {
-		const inAuthGroup = segments[0] === '(tabs)'
-
-		if (user) {
-			router.replace('/')
-		} else if (!user) {
-			router.replace('/(tabs)')
-		}
-	}, [user])
 	return (
 		<Stack
 			screenOptions={{

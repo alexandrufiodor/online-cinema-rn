@@ -6,7 +6,7 @@ import MenuItem from '@/ui/layout/bottom-menu/MenuItem'
 import { TypeNavigate } from '@/ui/layout/bottom-menu/menu.interface'
 
 interface IBottomMenu {
-	nav: TypeNavigate
+	nav: TypeNavigate | any
 	currentRoute?: string
 }
 
