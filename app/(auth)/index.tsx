@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import ParallaxScrollView from '@/ui/ParallaxScrollView'
+import ParallaxScrollView from '@/components/ui/ParallaxScrollView'
 import { Link } from 'expo-router'
 
 export default function Home() {

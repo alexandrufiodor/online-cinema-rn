@@ -2,8 +2,10 @@ import React, { FC, useState } from 'react'
 import { Pressable, Text, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IAuthFormData } from '@/shared/types/auth.interface'
-import { Button, DismissKeyboard, Loader } from '@/ui'
+import { Button, DismissKeyboard, Loader } from '@/components/ui'
 import AuthFields from '@/components/screens/auth/AuthFields'
+import { useMutation } from '@tanstack/react-query'
+import { AuthService } from '@/services/auth/auth.service'
 
 const AuthScreen: FC = () => {
 	const [isReg, setIsReg] = useState<boolean>(false)
@@ -12,8 +14,16 @@ const AuthScreen: FC = () => {
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
-
-	const onSubmit: SubmitHandler<IAuthFormData> = ({ email, password }) => {}
+	const { mutate } = useMutation({
+		mutationFn: ({ email, password }: { email: string; password: string }) =>
+			AuthService.main(isReg ? 'reg' : 'login', email, password),
+		onSuccess: response => {
+			console.log('🚀Auth.tsx:21', JSON.stringify(response, null, 2))
+		}
+	})
+	const onSubmit: SubmitHandler<IAuthFormData> = ({ email, password }) => {
+		mutate({ email, password })
+	}
 
 	return (
 		<DismissKeyboard>

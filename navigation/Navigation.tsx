@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from 'react'
 import PrivateNavigator from '@/navigation/PrivateNavigator'
-import BottomMenu from '@/ui/layout/bottom-menu/BottomMenu'
 import { useAuth } from '@/hooks/useAuth'
 import { useNavigationContainerRef, useRouter } from 'expo-router'
+import BottomMenu from '@/components/ui/layout/bottom-menu/BottomMenu'
+import { useCheckAuth } from '@/providers/auth/useCheckAuth'
 
 const Navigation: FC = () => {
 	const { user } = useAuth()
@@ -29,6 +30,8 @@ const Navigation: FC = () => {
 			router.replace('/(auth)')
 		}
 	}, [user])
+
+	useCheckAuth(currentRoute || '')
 	return (
 		<>
 			<PrivateNavigator />

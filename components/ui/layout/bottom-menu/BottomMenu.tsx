@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { menuItems } from '@/ui/layout/bottom-menu/menu.data'
-import MenuItem from '@/ui/layout/bottom-menu/MenuItem'
-import { TypeNavigate } from '@/ui/layout/bottom-menu/menu.interface'
+import { menuItems } from '@/components/ui/layout/bottom-menu/menu.data'
+import MenuItem from '@/components/ui/layout/bottom-menu/MenuItem'
+import { TypeNavigate } from '@/components/ui/layout/bottom-menu/menu.interface'
 
 interface IBottomMenu {
 	nav: TypeNavigate | any

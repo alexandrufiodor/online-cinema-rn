@@ -1,6 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { StyleSheet, Text, View } from 'react-native'
-import ParallaxScrollView from '@/ui/ParallaxScrollView'
+import ParallaxScrollView from '@/components/ui/ParallaxScrollView'
 import { Link } from 'expo-router'
 
 export default function Settings() {
