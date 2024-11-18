@@ -1,17 +1,23 @@
 import { ComponentType } from 'react'
 
-export type TypeRoutStackParamList = {
+export type TypeRootStackParamList = {
 	index: undefined
-	['(protected)']: undefined
-	// ['(tabs)']: undefined
-} & TypeRouteStackAdminList
+	['(auth)']: undefined
+	['(tabs)']: undefined
+	rating: undefined
+	settings: undefined
+}
 
-type TypeRouteStackAdminList = {
-	Admin: undefined
+export type TypeRouteTabList = {
+	index: undefined
+	trending: undefined
+	search: undefined
+	favorites: undefined
+	profile: undefined
 }
 
 export interface IRoute {
-	name: keyof TypeRoutStackParamList
+	name: keyof TypeRootStackParamList
 	component: ComponentType
 	options?: {}
 	isAdmin?: boolean

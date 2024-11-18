@@ -1,7 +1,8 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import ParallaxScrollView from '@/ui/ParallaxScrollView'
+import { Link } from 'expo-router'
 
-export default function HomeScreen() {
+export default function Home() {
 	return (
 		<ParallaxScrollView
 			headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -16,6 +17,14 @@ export default function HomeScreen() {
 				>
 					Home
 				</Text>
+				<Link href='/settings'>
+					<Text
+						className='text-2xl caret-blue-300 font-bold color-red'
+						// style={{ fontWeight: '900' }}
+					>
+						Go to Settings
+					</Text>
+				</Link>
 			</View>
 		</ParallaxScrollView>
 	)

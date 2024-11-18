@@ -1,7 +1,6 @@
 import { IRoute } from '@/navigation/navigation.types'
-import { adminRoutes } from '@/navigation/admin.routes'
 import index from '@/app'
-import TabLayout from '@/app/(protected)/_layout'
+import Layout from '@/app/(auth)/_layout'
 
 export const userRoutes: IRoute[] = [
 	{
@@ -9,9 +8,9 @@ export const userRoutes: IRoute[] = [
 		component: index
 	},
 	{
-		name: '(protected)',
-		component: TabLayout
+		name: '(auth)',
+		component: Layout
 	}
 ]
 
-export const routes = [...userRoutes, ...adminRoutes]
+export const routes = [...userRoutes]

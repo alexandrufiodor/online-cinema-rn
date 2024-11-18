@@ -14,6 +14,7 @@ const AuthScreen: FC = () => {
 	})
 
 	const onSubmit: SubmitHandler<IAuthFormData> = ({ email, password }) => {}
+
 	return (
 		<DismissKeyboard>
 			<View className='mx-2 justify-center items-center h-full'>

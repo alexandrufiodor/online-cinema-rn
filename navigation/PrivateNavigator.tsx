@@ -9,12 +9,12 @@ const PrivateNavigator: FC = () => {
 	const router = useRouter()
 
 	useEffect(() => {
-		const inAuthGroup = segments[0] === '(protected)'
+		const inAuthGroup = segments[0] === '(tabs)'
 
-		if (!user && inAuthGroup) {
+		if (user) {
 			router.replace('/')
-		} else if (user) {
-			router.replace('/(protected)')
+		} else if (!user) {
+			router.replace('/(tabs)')
 		}
 	}, [user])
 	return (
@@ -23,21 +23,13 @@ const PrivateNavigator: FC = () => {
 				headerShown: false
 			}}
 		>
-			{user ? (
-				routes.map(route =>
-					user.isAdmin || !route.isAdmin ? (
-						<Stack.Screen
-							key={route.name}
-							name={route.name}
-							options={route.options}
-						/>
-					) : (
-						<Stack.Screen key='not-found' name='+not-found' />
-					)
-				)
-			) : (
-				<Stack.Screen key='index' name='index' />
-			)}
+			{routes.map(route => (
+				<Stack.Screen
+					key={route.name}
+					name={route.name}
+					options={route.options}
+				/>
+			))}
 		</Stack>
 	)
 }

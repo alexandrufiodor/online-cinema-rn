@@ -2,7 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import { StyleSheet, Text, View } from 'react-native'
 import ParallaxScrollView from '@/ui/ParallaxScrollView'
 
-export default function TabTwoScreen() {
+export default function Favorites() {
 	return (
 		<ParallaxScrollView
 			headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
