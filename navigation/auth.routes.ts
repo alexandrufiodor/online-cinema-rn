@@ -1,11 +1,11 @@
 import { IRoute } from '@/navigation/navigation.types'
-import Rating from '@/app/(auth)/rating'
-import Settings from '@/app/(auth)/settings'
+import Settings from '@/app/(private)/settings'
+import Favorites from '@/app/(private)/favorites'
 
 export const authRoutes: IRoute[] = [
 	{
-		name: 'rating',
-		component: Rating,
+		name: 'favorites',
+		component: Favorites,
 		options: {
 			headerShown: false
 		}

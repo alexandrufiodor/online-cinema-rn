@@ -8,6 +8,7 @@ import {
 import { IContext, TypeUserState } from './auth-provider.interface'
 import * as SplashScreen from 'expo-splash-screen'
 import { getAccessToken, getUserFromStorage } from '@/services/auth/auth.helper'
+import { useRouter } from 'expo-router'
 
 export const AuthContext = createContext({} as IContext)
 
@@ -15,6 +16,7 @@ let ignore = SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const [user, setUser] = useState<TypeUserState>(null)
+	const router = useRouter()
 
 	useEffect(() => {
 		let isMounted = true
@@ -23,7 +25,12 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 				const accessToken = await getAccessToken()
 				if (accessToken) {
 					const user = await getUserFromStorage()
-					if (isMounted) setUser(user)
+					if (isMounted) {
+						setUser(user)
+						router.replace('/(private)')
+					}
+				} else {
+					router.replace('/(public)')
 				}
 			} catch {
 			} finally {

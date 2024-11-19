@@ -1,11 +1,11 @@
 import { IRoute } from '@/navigation/navigation.types'
-import index from '@/app'
-import Layout from '@/app/(auth)/_layout'
+import Layout from '@/app/(private)/_layout'
+import NoAuthLayout from '@/app/(public)/_layout'
 
 export const userRoutes: IRoute[] = [
 	{
-		name: 'index',
-		component: index
+		name: '(public)',
+		component: NoAuthLayout
 	},
 	{
 		name: '(auth)',

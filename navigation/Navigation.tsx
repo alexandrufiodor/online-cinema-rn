@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react'
-import PrivateNavigator from '@/navigation/PrivateNavigator'
 import { useAuth } from '@/hooks/useAuth'
-import { useNavigationContainerRef, useRouter } from 'expo-router'
+import { Stack, useNavigationContainerRef, useRouter } from 'expo-router'
 import BottomMenu from '@/components/ui/layout/bottom-menu/BottomMenu'
 import { useCheckAuth } from '@/providers/auth/useCheckAuth'
+import { routes } from '@/navigation/user.routes'
 
 const Navigation: FC = () => {
 	const { user } = useAuth()
@@ -23,18 +23,22 @@ const Navigation: FC = () => {
 		}
 	}, [])
 
-	useEffect(() => {
-		if (!user) {
-			router.replace('/')
-		} else {
-			router.replace('/(auth)')
-		}
-	}, [user])
-
 	useCheckAuth(currentRoute || '')
 	return (
 		<>
-			<PrivateNavigator />
+			<Stack
+				screenOptions={{
+					headerShown: false
+				}}
+			>
+				{routes.map(route => (
+					<Stack.Screen
+						key={route.name}
+						name={route.name}
+						options={route.options}
+					/>
+				))}
+			</Stack>
 			{user && <BottomMenu nav={navRef.navigate} currentRoute={currentRoute} />}
 		</>
 	)

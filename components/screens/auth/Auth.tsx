@@ -4,25 +4,19 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { IAuthFormData } from '@/shared/types/auth.interface'
 import { Button, DismissKeyboard, Loader } from '@/components/ui'
 import AuthFields from '@/components/screens/auth/AuthFields'
-import { useMutation } from '@tanstack/react-query'
-import { AuthService } from '@/services/auth/auth.service'
+import { useAuthMutations } from '@/components/screens/auth/useAuthMutations'
 
 const AuthScreen: FC = () => {
 	const [isReg, setIsReg] = useState<boolean>(false)
-	const [isLoading, setIsLoading] = useState<boolean>(false)
 
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
-	const { mutate } = useMutation({
-		mutationFn: ({ email, password }: { email: string; password: string }) =>
-			AuthService.main(isReg ? 'reg' : 'login', email, password),
-		onSuccess: response => {
-			console.log('🚀Auth.tsx:21', JSON.stringify(response, null, 2))
-		}
-	})
-	const onSubmit: SubmitHandler<IAuthFormData> = ({ email, password }) => {
-		mutate({ email, password })
+	const { loginSync, registerSync, isLoading } = useAuthMutations(reset)
+
+	const onSubmit: SubmitHandler<IAuthFormData> = data => {
+		if (isReg) registerSync(data)
+		else loginSync(data)
 	}
 
 	return (
@@ -41,7 +35,7 @@ const AuthScreen: FC = () => {
 								Go to watch
 							</Button>
 
-							<Pressable onPress={() => setIsReg(!isReg)}>
+							<Pressable onPress={() => setIsReg(!isReg)} disabled={isLoading}>
 								<Text className='text-base text-white text-right mt-3 opacity-30'>
 									{isReg ? 'Login' : 'Register'}
 								</Text>

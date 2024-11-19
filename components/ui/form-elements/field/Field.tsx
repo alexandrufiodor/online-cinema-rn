@@ -1,8 +1,8 @@
-import { IField } from '@/ui/form-elements/field/field.interface'
 import { Controller } from 'react-hook-form'
 import { Text, TextInput } from 'react-native'
 import { clsx } from 'clsx'
 import React from 'react'
+import { IField } from '@/components/ui/form-elements/field/field.interface'
 
 const Field = <T extends Record<string, any>>({
 	placeholder,
@@ -34,6 +34,7 @@ const Field = <T extends Record<string, any>>({
 							error ? 'border-red' : 'border-transparent'
 						)}
 						placeholderClassName='text-red'
+						{...rest}
 					/>
 					{error && <Text className='text-red'>{error?.message}</Text>}
 				</>
