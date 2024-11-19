@@ -1,14 +1,12 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { AuthService } from '@/services/auth/auth.service'
 import { useAuth } from '@/hooks/useAuth'
-import { useRouter } from 'expo-router'
 import { AntDesign } from '@expo/vector-icons'
 import { deleteItemAsync, getItemAsync } from 'expo-secure-store'
 import { EnumSecureStore } from '@/shared/types/auth.interface'
 
 export default function Profile() {
 	const { setUser } = useAuth()
-	const router = useRouter()
 	return (
 		<View className='mt-20 px-10'>
 			<Pressable
@@ -48,7 +46,6 @@ export default function Profile() {
 				onPress={async () => {
 					await AuthService.logout().then(() => {
 						setUser(null)
-						router.replace('/(public)')
 					})
 				}}
 			>
@@ -58,15 +55,3 @@ export default function Profile() {
 		</View>
 	)
 }
-const styles = StyleSheet.create({
-	headerImage: {
-		color: '#808080',
-		bottom: -90,
-		left: -35,
-		position: 'absolute'
-	},
-	titleContainer: {
-		flexDirection: 'row',
-		gap: 8
-	}
-})

@@ -49,8 +49,12 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	}, [])
 
 	useEffect(() => {
-		if (!isLoading && user) {
-			router.replace('/(auth)')
+		if (!isLoading) {
+			if (user) {
+				router.replace('/(auth)')
+			} else {
+				router.replace('/(public)')
+			}
 		}
 	}, [user])
 	return (
