@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import ParallaxScrollView from '@/components/ui/ParallaxScrollView'
 import { Link } from 'expo-router'
 
-export default function Home() {
+export default function Index() {
 	return (
 		<ParallaxScrollView
 			headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}

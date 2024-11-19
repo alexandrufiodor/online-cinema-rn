@@ -6,11 +6,9 @@ import { AuthService } from '@/services/auth/auth.service'
 import { getNewTokens } from '@/services/api/helper.auth'
 import { getItemAsync } from 'expo-secure-store'
 import { EnumSecureStore } from '@/shared/types/auth.interface'
-import { useRouter } from 'expo-router'
 
 export const useCheckAuth = (routeName: string) => {
 	const { user, setUser } = useAuth()
-	const router = useRouter()
 
 	useEffect(() => {
 		const checkAccessToken = async () => {
@@ -22,7 +20,6 @@ export const useCheckAuth = (routeName: string) => {
 					if (errorCatch(e) === 'jwt expired') {
 						await AuthService.logout()
 						setUser(null)
-						router.replace('/(public)')
 					}
 				}
 			}
@@ -36,7 +33,6 @@ export const useCheckAuth = (routeName: string) => {
 			if (!refreshToken && user) {
 				await AuthService.logout()
 				setUser(null)
-				router.replace('/(public)')
 			}
 		}
 		let ignore = checkRefreshToken()

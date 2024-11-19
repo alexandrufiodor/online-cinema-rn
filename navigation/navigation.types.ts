@@ -1,12 +1,11 @@
 import { ComponentType } from 'react'
 
 export type TypeRootStackParamList = {
-	index: undefined
-	favorites: undefined
-	settings: undefined
 	['(public)']: undefined
 	['(auth)']: undefined
-}
+	rating: undefined
+	settings: undefined
+} & TypeRouteTabList
 
 export type TypeRouteTabList = {
 	index: undefined

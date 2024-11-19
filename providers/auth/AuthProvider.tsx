@@ -16,10 +16,12 @@ let ignore = SplashScreen.preventAutoHideAsync()
 
 const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	const [user, setUser] = useState<TypeUserState>(null)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const router = useRouter()
 
 	useEffect(() => {
 		let isMounted = true
+		setIsLoading(true)
 		const checkAccessToken = async () => {
 			try {
 				const accessToken = await getAccessToken()
@@ -27,14 +29,17 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 					const user = await getUserFromStorage()
 					if (isMounted) {
 						setUser(user)
-						router.replace('/(private)')
+						router.replace('/(auth)')
 					}
 				} else {
 					router.replace('/(public)')
 				}
 			} catch {
 			} finally {
-				await SplashScreen.hideAsync()
+				setTimeout(async () => {
+					await SplashScreen.hideAsync()
+					setIsLoading(false)
+				}, 1000)
 			}
 		}
 		let ignore = checkAccessToken()
@@ -42,6 +47,12 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 			isMounted = false
 		}
 	}, [])
+
+	useEffect(() => {
+		if (!isLoading && user) {
+			router.replace('/(auth)')
+		}
+	}, [user])
 	return (
 		<AuthContext.Provider value={{ user, setUser }}>
 			{children}
