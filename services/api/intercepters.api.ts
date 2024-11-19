@@ -33,7 +33,7 @@ instance.interceptors.response.use(
 			error.config &&
 			!error.config._isRetry
 		) {
-			originalRequest.isRetry = true
+			originalRequest._isRetry = true
 			try {
 				await getNewTokens()
 				return instance.request(originalRequest)

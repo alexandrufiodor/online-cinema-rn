@@ -2,7 +2,7 @@ import { IRoute } from '@/navigation/navigation.types'
 import Rating from '@/app/(auth)/rating'
 import Settings from '@/app/(auth)/settings'
 import Index from '@/app/(auth)'
-import Profile from '@/app/(auth)/profile'
+import ProfileScreen from '@/app/(auth)/profile'
 import Favorites from '@/app/(auth)/favorites'
 import Search from '@/app/(auth)/search'
 import Trending from '@/app/(auth)/trending'
@@ -10,7 +10,10 @@ import Trending from '@/app/(auth)/trending'
 export const authRoutes: IRoute[] = [
 	{
 		name: 'index',
-		component: Index
+		component: Index,
+		options: {
+			headerShown: false
+		}
 	},
 	{
 		name: 'rating',
@@ -21,23 +24,38 @@ export const authRoutes: IRoute[] = [
 	},
 	{
 		name: 'settings',
-		component: Settings
+		component: Settings,
+		options: {
+			headerShown: false
+		}
 	},
 	{
 		name: 'profile',
-		component: Profile
+		component: ProfileScreen,
+		options: {
+			headerShown: false
+		}
 	},
 	{
 		name: 'favorites',
-		component: Favorites
+		component: Favorites,
+		options: {
+			headerShown: false
+		}
 	},
 	{
 		name: 'search',
-		component: Search
+		component: Search,
+		options: {
+			headerShown: false
+		}
 	},
 	{
 		name: 'trending',
-		component: Trending
+		component: Trending,
+		options: {
+			headerShown: false
+		}
 	}
 ]
 
