@@ -5,6 +5,8 @@ export type TypeRootStackParamList = {
 	['(auth)']: undefined
 	rating: undefined
 	settings: undefined
+	['movie/[slug]']: undefined
+	['genre/[slug]']: undefined
 } & TypeRouteTabList
 
 export type TypeRouteTabList = {

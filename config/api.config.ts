@@ -1,6 +1,5 @@
-export const SERVER_URL = process.env.SERVER_URL
+export const SERVER_URL = process.env.SERVER_URL || 'http://localhost:4200'
 export const API_URL = `${SERVER_URL}/api`
-
 export const getAuthUrl = (string: string) => `/auth/${string}`
 export const getUserUrl = (string: string) => `/users/${string}`
 export const getMoviesUrl = (string: string) => `/movies/${string}`

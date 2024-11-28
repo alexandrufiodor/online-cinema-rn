@@ -3,8 +3,8 @@ module.exports = function (api) {
 	return {
 		presets: [
 			['babel-preset-expo', { jsxImportSource: 'nativewind' }],
-			'nativewind/babel'
-		],
-		plugins: ['inline-dotenv']
+			['nativewind/babel'],
+			['react-native-reanimated/plugin']
+		]
 	}
 }

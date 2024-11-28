@@ -1,8 +1,15 @@
 import { FC } from 'react'
-import { View } from 'react-native'
+import { Layout, Loader } from '@/components/ui'
+import { useGetAllMovies } from '@/components/screens/home/useGetAllMovies'
+import Carousel from '@/components/screens/home/carousel/Carousel'
 
 const Home: FC = () => {
-	return <View></View>
+	const { movies, isLoading } = useGetAllMovies()
+	return (
+		<Layout>
+			{isLoading ? <Loader /> : movies?.length && <Carousel movies={movies} />}
+		</Layout>
+	)
 }
 
 export default Home
