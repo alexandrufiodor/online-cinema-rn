@@ -8,6 +8,7 @@ const GenreList: FC<{ genres: IGenre[] }> = ({ genres }) => {
 		<View className='flex-row gap-3'>
 			{genres.map(genre => (
 				<Link
+					key={genre._id}
 					href={{
 						pathname: `/genre/[slug]`,
 						params: { slug: genre.slug }
