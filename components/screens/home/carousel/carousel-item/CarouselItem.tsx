@@ -3,9 +3,8 @@ import { Animated, Image, Text, View } from 'react-native'
 import { IMovie } from '@/shared/types/movie.interface'
 import { Link } from 'expo-router'
 import { getMediaSource } from '@/utils/getMediaSource'
-import { Rating } from '@/components/ui'
-import GenreList from '../../../../ui/movie/movie-item/GenreList'
-import { useItemAnimation } from '@/components/screens/home/carousel/carousel-item/useItemAnimation'
+import { FavoriteButton, GenreList, Rating } from '@/components/ui'
+import { useItemAnimation } from './useItemAnimation'
 import {
 	ITEM_SIZE,
 	SPACING
@@ -37,7 +36,9 @@ const CarouselItem: FC<ICarouselItem> = ({ movie, index, scrollX }) => {
 					}}
 				>
 					<View className='w-full relative'>
-						<View className='absolute z-1 right-2 top-2'></View>
+						<View className='absolute z-1 right-2 top-2'>
+							<FavoriteButton movieId={movie._id} />
+						</View>
 						<Image
 							style={{
 								width: ITEM_SIZE * 0.9,
