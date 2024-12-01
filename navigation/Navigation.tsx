@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { useNavigationContainerRef } from 'expo-router'
-import BottomMenu from '@/components/ui/layout/bottom-menu/BottomMenu'
 import { useCheckAuth } from '@/providers/auth/useCheckAuth'
 import PrivateNavigator from '@/navigation/PrivateNavigator'
+import BottomMenu from '@/components/ui/layout/bottom-menu/BottomMenu'
 
 const Navigation: FC = () => {
 	const { user } = useAuth()

@@ -1,8 +1,16 @@
 import { FC } from 'react'
-import { View } from 'react-native'
+import { useFavorites } from './useFavorites'
+import { Layout, Loader, MovieCatalog } from '@/components/ui'
 
 const Favorites: FC = () => {
-	return <View></View>
+	const { favoriteMovies, isLoading } = useFavorites()
+
+	if (isLoading) return <Loader />
+	return (
+		<Layout isHasPadding>
+			<MovieCatalog title='Favorites' movies={favoriteMovies} />
+		</Layout>
+	)
 }
 
 export default Favorites

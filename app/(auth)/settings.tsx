@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 import { Link } from 'expo-router'
 
-export default function Settings() {
+export default function SettingsScreen() {
 	return (
 		<View className='pt-20 bg-amber-200 color-red'>
 			<Link href='/rating'>

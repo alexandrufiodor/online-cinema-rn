@@ -2,7 +2,10 @@ import { FC } from 'react'
 import { Pressable } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import { getColor } from '@/config/colors.config'
-import { IMenuItem, TypeNavigate } from '@/ui/layout/bottom-menu/menu.interface'
+import {
+	IMenuItem,
+	TypeNavigate
+} from '@/components/ui/layout/bottom-menu/menu.interface'
 
 interface IMenuItemProps {
 	item: IMenuItem
@@ -14,7 +17,12 @@ const MenuItem: FC<IMenuItemProps> = ({ currentRoute, item, nav }) => {
 	const isActive = currentRoute === item.path
 
 	return (
-		<Pressable className='items-center w-[20%]' onPress={() => nav(item.path)}>
+		<Pressable
+			className='items-center w-[20%]'
+			onPress={() => {
+				nav(item.path)
+			}}
+		>
 			<Feather
 				name={item.iconName}
 				size={26}

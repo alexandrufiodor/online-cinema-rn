@@ -1,12 +1,12 @@
 import { IRoute } from '@/navigation/navigation.types'
-import Rating from '@/app/(auth)/rating'
+import RatingScreen from '@/app/(auth)/rating'
 import Settings from '@/app/(auth)/settings'
 import Index from '@/app/(auth)'
 import ProfileScreen from '@/app/(auth)/profile'
-import Favorites from '@/app/(auth)/favorites'
-import Search from '@/app/(auth)/search'
-import Trending from '@/app/(auth)/trending'
+import FavoritesScreen from '@/app/(auth)/favorites'
 import MovieSlug from '@/app/(auth)/movie/[slug]'
+import TrendingScreen from '@/app/(auth)/trending'
+import SearchScreen from '@/app/(auth)/search'
 
 export const authRoutes: IRoute[] = [
 	{
@@ -18,7 +18,7 @@ export const authRoutes: IRoute[] = [
 	},
 	{
 		name: 'rating',
-		component: Rating,
+		component: RatingScreen,
 		options: {
 			headerShown: false
 		}
@@ -39,21 +39,21 @@ export const authRoutes: IRoute[] = [
 	},
 	{
 		name: 'favorites',
-		component: Favorites,
+		component: FavoritesScreen,
 		options: {
 			headerShown: false
 		}
 	},
 	{
 		name: 'search',
-		component: Search,
+		component: SearchScreen,
 		options: {
 			headerShown: false
 		}
 	},
 	{
 		name: 'trending',
-		component: Trending,
+		component: TrendingScreen,
 		options: {
 			headerShown: false
 		}
