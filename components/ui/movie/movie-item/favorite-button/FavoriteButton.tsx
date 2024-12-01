@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import BlurButton from '../../../blur-button/BlurButton'
-import { clsx } from 'clsx'
 import { StyleSheet } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useFavoriteAnimation } from './useFavoriteAnimation'
@@ -17,7 +16,7 @@ const FavoriteButton: FC<IFavoriteButton> = ({ movieId, isSmall }) => {
 	const { liked, outlineStyle, fillStyle } = useFavoriteAnimation(isSmashed)
 	return (
 		<BlurButton
-			className={clsx({ 'w-8 h-8 rounded-lg': isSmall })}
+			isSmall={isSmall}
 			onPress={() => {
 				liked.value = withSpring(liked.value === 1 ? 0 : 1)
 				toggleFavorite()

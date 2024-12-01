@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import { useTypedRoute } from '@/hooks/useTypedRoute'
 import Animated from 'react-native-reanimated'
 import { useMovieItemAnimation } from './useMovieItemAnimation'
@@ -7,35 +7,29 @@ import { IMovie } from '@/shared/types/movie.interface'
 import { Link } from 'expo-router'
 import { FavoriteButton, Rating } from '@/components/ui'
 import { BlurView } from 'expo-blur'
-import { clsx } from 'clsx'
 import { getMediaSource } from '@/utils/getMediaSource'
-
-const ReanimatedLink = Animated.createAnimatedComponent(Link)
 
 interface IMovieItem {
 	index: number
-	className?: string
 	movie: IMovie
+	style?: ViewStyle
 }
 
-const MovieItem: FC<IMovieItem> = ({ index, movie, className }) => {
+const MovieItem: FC<IMovieItem> = ({ index, movie, style = {} }) => {
 	const { name } = useTypedRoute()
 	const isFavoritePage = name === 'favorites'
 
-	const { styleAnimation } = useMovieItemAnimation(index)
+	const { styleAnimation } = useMovieItemAnimation(index, style)
 	return (
-		<ReanimatedLink
+		<Link
 			href={{
 				pathname: `/movie/[slug]`,
 				params: { slug: movie.slug }
 			}}
-			style={styleAnimation}
 		>
-			<View
-				className={clsx(
-					'rounded-xl overflow-hidden h-56 w-[165px] relative',
-					className
-				)}
+			<Animated.View
+				className={'rounded-xl overflow-hidden h-56'}
+				style={styleAnimation}
 			>
 				<Image
 					style={{
@@ -64,8 +58,8 @@ const MovieItem: FC<IMovieItem> = ({ index, movie, className }) => {
 					</Text>
 				</BlurView>
 				{/*</Animated.View>*/}
-			</View>
-		</ReanimatedLink>
+			</Animated.View>
+		</Link>
 	)
 }
 

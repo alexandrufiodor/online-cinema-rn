@@ -32,11 +32,11 @@ export const MovieService = {
 			method: 'GET'
 		})
 	},
-	async getByGenres(genreIds: string) {
-		return request<IMovie>({
+	async getByGenres(genreIds: string[]) {
+		return request<IMovie[]>({
 			url: getMoviesUrl(`by-genres`),
 			method: 'POST',
-			data: genreIds
+			data: { genreIds }
 		})
 	},
 	async getById(_id: string) {

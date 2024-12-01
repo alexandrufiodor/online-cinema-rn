@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native'
+import Trending from '@/components/screens/trending/Trending'
 
 export default function TrendingScreen() {
-	return (
-		<View className='pt-20 bg-amber-200'>
-			<Text>Explore</Text>
-		</View>
-	)
+	return <Trending />
 }
