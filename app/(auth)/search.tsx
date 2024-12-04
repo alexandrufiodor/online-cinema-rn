@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native'
+import Search from '@/components/screens/search/Search'
 
 export default function SearchScreen() {
-	return (
-		<View className='pt-20 bg-amber-200'>
-			<Text>Explore</Text>
-		</View>
-	)
+	return <Search />
 }

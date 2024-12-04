@@ -7,6 +7,7 @@ import FavoritesScreen from '@/app/(auth)/favorites'
 import MovieSlug from '@/app/(auth)/movie/[slug]'
 import TrendingScreen from '@/app/(auth)/trending'
 import SearchScreen from '@/app/(auth)/search'
+import ActorSlug from '@/app/(auth)/actor/[slug]'
 
 export const authRoutes: IRoute[] = [
 	{
@@ -68,6 +69,13 @@ export const authRoutes: IRoute[] = [
 	{
 		name: 'genre/[slug]',
 		component: MovieSlug,
+		options: {
+			headerShown: false
+		}
+	},
+	{
+		name: 'actor/[slug]',
+		component: ActorSlug,
 		options: {
 			headerShown: false
 		}

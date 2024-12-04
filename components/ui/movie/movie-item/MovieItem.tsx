@@ -5,7 +5,9 @@ import Animated from 'react-native-reanimated'
 import { useMovieItemAnimation } from './useMovieItemAnimation'
 import { IMovie } from '@/shared/types/movie.interface'
 import { Link } from 'expo-router'
-import { FavoriteButton, Rating } from '@/components/ui'
+import FavoriteButton from '../movie-item/favorite-button/FavoriteButton'
+import Rating from '../movie-item/Rating'
+
 import { BlurView } from 'expo-blur'
 import { getMediaSource } from '@/utils/getMediaSource'
 
